@@ -23,11 +23,11 @@ App Runner는 AWS ECS와 Fargate 위에서 실행되고, 휠씬 더 쉬운 접�
    
 백엔드는 AWS RDS(MySQL)를 사용하며 스프링의 핵심 기능 활용을 시연한다.   
 
-## Contributor
+## 기여자
 
 1. Irshad A Buchh, Amazon Web Services
 
-## Architecture
+## 아키텍처
 ![Architecture](images/Architecture.png)
 
 ## 사전 준비 사항
@@ -77,67 +77,67 @@ Cloud9 임시 자격 증명을 사용하지 않도록 설정하고 Cloud9 인스
     aws sts get-caller-identity --query Arn | grep workshop-admin -q && echo "IAM role valid" || echo "IAM role NOT valid"
     ```
 
-#### Upgrade awscli
-To ensure you are running the latest version of AWS CLI, run the following command:
+#### awscli 설정
 
 ```bash
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
 aws --version
 pip install awscli --upgrade --user
 ```
 
-Run `aws configure` to configure your region. Leave all the other fields blank. You should have something like:
+aws configure 를 통해 아래처럼 설정.   
 
 ```
 admin:~/environment $ aws configure
 AWS Access Key ID [None]: 
 AWS Secret Access Key [None]: 
-Default region name [None]: us-east-1
+Default region name [None]: ap-northeast-1
 Default output format [None]: 
 ```
 
-#### Install Terraform
-
-Download and install Terraform:
+#### 테라폼 설치
 
 ```bash
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
 sudo yum -y install terraform
-```
 
-Verify that you can run Terraform:
-
-```bash
 terraform version
 ```
 
-#### Install Apache Maven
+#### Apache Maven 설치 및 설정
+
+아래와 같이 설치한다.   
 
 ```bash
 cd /tmp
-sudo wget https://www-eu.apache.org/dist/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz
+sudo wget https://archive.apache.org/dist/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz
 sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
 sudo ln -s /opt/apache-maven-3.8.1 /opt/maven
 
-```
-#### Setup Apache Maven
+아래와 같이 설정한다.
 
-```bash
 sudo nano ~/.bashrc
 ```
-Paste the following lines at the end of the file:
+
+파일 끝에 다음을 붙여 넣는다.   
 
 ```bash
 export M2_HOME=/opt/maven
 export MAVEN_HOME=/opt/maven
 export PATH=${M2_HOME}/bin:${PATH}
 ```
-Verify the Apache Maven installation:
+
+아래와 같이 설치되었음을 확인하다.   
 
 ```bash
 source ~/.bashrc
 mvn --version
 ```
+
 #### Clone workshop repository
 <!---
 You will need to import the workshop files into your Cloud9 environment:
