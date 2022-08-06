@@ -234,10 +234,10 @@ aws ssm put-parameter --name /database/password --value mysqlpassword --type Sec
 cd ~/environment/aws-apprunner-terraform/terraform
 ```
 
-terraform.tfvars 파일을 수정한다.   
+`terraform.tfvars` 파일을 수정한다.   
 - aws_profile은 "default" 그대로 둔다.   
-- aws_region은 "ap-northeast-1"으로 수정하고,   
-- codebuild_cache_bucket_name의 apprunner-cache-yyyymmdd-identifier 중 가운데 yyyymmdd는 오늘 날짜로, identifier는 사용자 고유한 이름으로 수정한다.   
+- aws_region은 `"ap-northeast-1"`으로 수정하고,   
+- codebuild_cache_bucket_name의 apprunner-cache-yyyymmdd-identifier 중 가운데 `yyyymmdd`는 오늘 날짜로, `identifier`는 사용자 고유한 이름으로 수정한다.   
 
 S3 버킷의 이름은 전역적으로 고유해야 하고, 숫자, 소문자, 하이픈이 포함될 수 있다.   
 
