@@ -25,7 +25,7 @@ App Runner는 AWS ECS와 Fargate 위에서 실행되고, 휠씬 더 쉬운 접�
 
 ## 기여자
 
-1. Irshad A Buchh, Amazon Web Services
+1. Irshad A Buchh, Amazon Web Services (https://github.com/aws-samples/aws-apprunner-terraform)
 
 ## 아키텍처
 ![Architecture](images/Architecture.png)
@@ -117,9 +117,11 @@ cd /tmp
 sudo wget https://archive.apache.org/dist/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz
 sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
 sudo ln -s /opt/apache-maven-3.8.1 /opt/maven
+```
 
 아래와 같이 설정한다.
 
+```bash
 sudo nano ~/.bashrc
 ```
 
@@ -138,7 +140,7 @@ source ~/.bashrc
 mvn --version
 ```
 
-#### Clone workshop repository
+#### 리포지토리 클론
 <!---
 You will need to import the workshop files into your Cloud9 environment:
 
@@ -149,25 +151,25 @@ cd aws-ecs-cicd-terraform-master
 ```
 -->
 
-Clone the source code repository:
+소스 코드 리포지토리를 클론한다.   
 
 ```bash
 cd ~/environment
-git clone https://github.com/aws-samples/aws-apprunner-terraform.git
+git clone https://github.com/relaxmanitstime/aws-apprunner-terraform.git
 ```
 
-## Package the application using Apache Maven
+## Apache Maven을 이용하여 응용 프로그램 패키징
+
+아래 명령을 처음 실행할 때 메이븐은 필요한 플러그인과 관련 종속성을 다운로드하는 데 시간이 걸린다.(5분 이상)   
+이후에는 다운로드할 필요가 없어서 더 빨리 실행한다.   
+컴파일된 자바 클래스는 spring-petclinic/target/classes에 배치된다.   
 
 ```bash
 cd ~/environment/aws-apprunner-terraform/petclinic
 mvn package -Dmaven.test.skip=true
 ```
-The first time you execute this (or any other) command, Maven will need to download the plugins and related dependencies it needs to fulfill the command. From a clean installation of Maven, this can take some time (note: in the output above, it took almost five minutes). If you execute the command again, Maven will now have what it needs, so it won’t need to download anything new and will be able to execute the command quicker.
 
-The compiled java classes were placed in spring-petclinic/target/classes, which is another standard convention employed by Maven. By using the standard conventions, the POM above is small and you haven’t had to tell Maven explicitly where any of your sources are or where the output should go. By following the standard Maven conventions, you can do a lot with little effort.
-
-## Build and tag the Petclinic docker image
-From the petclinic directory:
+## Petclinic 도커 이미지 빌드 및 태그 지정
 
 ```bash
 docker build -t petclinic .
