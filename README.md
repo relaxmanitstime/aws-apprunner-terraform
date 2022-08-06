@@ -230,27 +230,31 @@ aws ssm put-parameter --name /database/password --value mysqlpassword --type Sec
 cd ~/environment/aws-apprunner-terraform/terraform
 ```
 
+terraform.tfvars 파일을 수정한다.   
+- aws_profile은 "default" 그대로 둔다.   
+- aws_region은 "ap-northeast-1"으로 수정하고,   
+- codebuild_cache_bucket_name의 apprunner-cache-yyyymmdd-identifier 중 가운데 yyyymmdd는 오늘 날짜로, identifier는 사용자 고유한 이름으로 수정한다.   
 
-
-Edit `terraform.tfvars`, leave the `aws_profile` as `"default"`, and ensure `aws_region` matches your environment, and update `codebuild_cache_bucket_name` to replace the placeholder `yyyymmdd` with today's date, and the identifier `identifier` with something unique to you to create globally unique S3 bucket name. S3 bucket names can include numbers, lowercase letters and hyphens.
+S3 버킷의 이름은 전역적으로 고유해야 하고, 숫자, 소문자, 하이픈이 포함될 수 있다.   
 
 ### 빌드
 
-Initialise Terraform:
+테라폼을 초기화한다.   
 
 ```bash
 terraform init
 ```
 
-Build the infrastructure and pipeline using terraform:
+테라폼을 사용하여 인프라 및 파이프라인을 구축한다.   
 
 ```bash
 terraform apply
 ```
 
-Terraform will display an action plan. When asked whether you want to proceed with the actions, enter `yes`.
+깃 이메일과 사용자 계정 입력 후 테라폼 실행 계획이 표시된다.   
+작업을 계속할지 묻는 메세지가 나오면 `yes`를 입력한다.   
 
-Wait for Terraform to complete the build before proceeding. It will take few minutes to complete “terraform apply” 
+“terraform apply”을 완료하는 데 몇 분 정도 걸린다.   
 
 ### Explore the stack you have built
 
