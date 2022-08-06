@@ -290,28 +290,24 @@ Open the App Runner service configuration file [terraform/services.tf](terraform
 ```
 **Note:** In a production environment it is a best practice to use a meaningful tag instead of using the `:latest` tag.
 
-## Deploy petclinic application using the pipeline
+## 파이프라인을 사용하여 펫클리닉 애플리케이션 배포
 
-You will now use git to push the petclinic application through the pipeline.
+깃으로 푸시하여 파이프라인을 통해 펫클리닉 애플리케이션을 배포한다.    
 
-
-
-### Set up a local git repo for the petclinic application
-
-Start by switching to the `petclinic` directory:
+### 펫클리닉 애플리케이션을 위한 로컬 깃 리포 설정
 
 ```bash
 cd ~/environment/aws-apprunner-terraform/petclinic
 ```
 
-Set up your git username and email address:
+깃 사용자 이름과 이메일 주소를 설정한다.   
 
 ```bash
-git config --global user.name "Your Name"
-git config --global user.email you@example.com
+git config --global user.name "YourName"
+git config --global user.email "YourEmail@example.com"
 ```
 
-Now ceate a local git repo for petclinic as follows:
+다음과 같이 펫클리닉을 위한 로컬 깃 리포를 만든다.   
 
 ```bash
 git init
@@ -319,25 +315,26 @@ git add .
 git commit -m "Baseline commit"
 ```
 
-### Set up the remote CodeCommit repo
+### 리모트 코드커밋 리포를 설정
 
-An AWS CodeCommit repo was built as part of the pipeline you created. You will now set this up as a remote repo for your local petclinic repo.
+너가 만든 파이프라인의 일부로 AWS CodeCommit Repo가 만들어졌다.   
+이제 로컬 펫클리닉 리포에 대한 리모트 리포를 설정할 것이다.   
 
-For authentication purposes, you can use the AWS IAM git credential helper to generate git credentials based on your IAM role permissions. Run:
+인증을 위해 AWS IAM git credential helper를 사용해 IAM 역할 사용 권한에 따라 Git 자격 증명을 생성할 수 있다.   
 
 ```bash
 git config --global credential.helper '!aws codecommit credential-helper $@'
 git config --global credential.UseHttpPath true
 ```
 
-From the output of the Terraform build, we use the output `source_repo_clone_url_http` in our next step.
+테라폼 빌드의 아웃풋으로부터 다음 단계에서 사용할 `source_repo_clone_url_http`을 사용한다.   
 
 ```bash
 cd ~/environment/aws-apprunner-terraform/terraform
 export tf_source_repo_clone_url_http=$(terraform output --raw source_repo_clone_url_http)
 ```
 
-Set this up as a remote for your git repo as follows:
+깃 리포를 위한 리모트를 설정한다.   
 
 ```bash
 cd ~/environment/aws-apprunner-terraform/petclinic
@@ -345,25 +342,24 @@ git remote add origin $tf_source_repo_clone_url_http
 git remote -v
 ```
 
-You should see something like:
+아래와 같은 결과가 나와야 한다.   
 
 ```bash
 origin  https://git-codecommit.eu-west-2.amazonaws.com/v1/repos/petclinic (fetch)
 origin  https://git-codecommit.eu-west-2.amazonaws.com/v1/repos/petclinic (push)
 ```
 
+### 파이프라인 실행(트리거)
 
-### Trigger the pipeline
-
-To trigger the pipeline, push the master branch to the remote as follows:
+파이프라인을 실행하기 위해서 리모트에 마스터 브랜치를 푸시한다.   
 
 ```bash
 git push -u origin master
 ```
 
-The pipeline will pull the code, build the docker image, push it to ECR, and deploy it to your ECS cluster. This will take a few minutes.
-You can monitor the pipeline in the [AWS CodePipeline console](https://console.aws.amazon.com/codepipeline).
-
+파이프라인은 코드를 pull하고, 도커 이미지를 빌드 및 ECR에 푸시하고, ECS 클러스터에 배포한다.   
+이 작업은 몇 분 정도 걸린다.   
+[AWS CodePipeline console](https://console.aws.amazon.com/codepipeline) 에서 파이프라인을 모니터링할 수 있다.   
 
 ### Test the application
 
