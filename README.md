@@ -84,6 +84,7 @@ Cloud9 임시 자격 증명을 사용하지 않도록 설정하고 Cloud9 인스
     ```bash
     aws sts get-caller-identity --query Arn | grep workshop-admin -q && echo "IAM role valid" || echo "IAM role NOT valid"
     ```
+    ![AwsGetCallerIdentity](images/aws-get-caller-identity-result.png)
 
 #### awscli 설정
 
