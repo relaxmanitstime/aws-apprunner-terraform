@@ -48,7 +48,7 @@ AWS 관리 콘솔에 로그인 후 Cloud9 서비스를 검색 후 실행하여 a
 
 AWS Cloud9 IDE를 실행 후 Welcome 탭을 닫고 새 터미널 탭을 연다.   
 
-![Cloud9](images/Cloud9.png)
+![AwsCloud9](images/aws-cloud9-220805.png)
 
 #### Cloud9 인스턴스에 대한 IAM 역할 생성 및 연결
 
