@@ -46,6 +46,9 @@ AWS 관리 콘솔에 로그인 후 Cloud9 서비스를 검색 후 실행하여 a
 
 ![AwsCloud9Preview](images/aws-cloud9-01.png)
 
+> Step 1. Name environment : 이름은 적당히...   
+> Step 2. Configure settings : Create a new EC2 instance for ...(direct access), t3.medium, Amazon Linux2 나머지는 Default 설정 그대로...   
+
 ### AWS Cloud9 환경 구성
 
 AWS Cloud9 IDE를 실행 후 Welcome 탭을 닫고 새 터미널 탭을 연다.   
