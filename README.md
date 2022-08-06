@@ -405,26 +405,25 @@ git push origin master
 
 As before, you can use the console to observe the progression of the change through the pipeline. Once done, verify that the application is working with the modified welcome message.
 
-## Tearing down the stack
+## 스택 해체
 
-**Note:** If you are participating in this workshop at an AWS-hosted event using Event Engine and a provided AWS account, you do not need to complete this step. We will cleanup all managed accounts afterwards on your behalf.
-
-Make sure that you remember to tear down the stack when finshed to avoid unnecessary charges. You can free up resources as follows:
+**참고:**
+이벤트 엔진과 제공된 AWS 계정을 사용하여 AWS가 호스팅하는 이벤트에 참여하는 경우 이 단계를 완료할 필요가 없으나,(관리자에 의해 향후 정리)   
+불필요한 과금을 피하기 위해서는 아래와 같이 스택을 해체해서 리소스를 없애야 한다.   
 
 ```
 cd ~/environment/aws-apprunner-terraform/terraform
 terraform destroy
 ```
 
-When prompted enter `yes` to allow the stack termination to proceed.
+`yes`를 입력해 스택을 종료한다.   
+완료되면 파이프라인에서 사용하는 S3 버킷을 수동으로 비우고 삭제해야 한다.   
 
-Once complete, note that you will have to manually empty and delete the S3 bucket used by the pipeline.
-
-## Delete the Amazon ECR
+## Amazon ECR 삭제
 
 ```bash
 aws ecr delete-repository \
     --repository-name $REPOSITORY_NAME \
-	--region $AWS_REGION \
+    --region $AWS_REGION \
     --force
 ```
