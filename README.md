@@ -349,8 +349,8 @@ git remote -v
 아래와 같은 결과가 나와야 한다.   
 
 ```bash
-origin  https://git-codecommit.eu-west-2.amazonaws.com/v1/repos/petclinic (fetch)
-origin  https://git-codecommit.eu-west-2.amazonaws.com/v1/repos/petclinic (push)
+origin  https://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/petclinic (fetch)
+origin  https://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/petclinic (push)
 ```
 
 ### 파이프라인 실행(트리거)
