@@ -39,7 +39,7 @@ Administrator 권한이 있는 AWS 계정
 
 ### AWS Cloud9 환경 생성
 
-AWS 관리 콘솔에 로그인 후 Cloud9 서비스를 검색 후 실행하여 ap-northeast-1 리전에서 Amazon Linux2 기반으로 환경을 구성한다. 여기서는 t3.medium으로 선택한다.   
+AWS 관리 콘솔에 로그인 후 Cloud9 서비스를 검색 후 실행하여 ap-northeast-1 도쿄 리전에서 Amazon Linux2 기반으로 환경을 구성한다. 여기서는 t3.medium으로 선택한다. 참고로 AWS App Runner는 22-08-05 기준으로 서울 리전에서는 사용할 수 없다.      
 
 ### AWS Cloud9 환경 구성
 
@@ -83,7 +83,11 @@ Cloud9 임시 자격 증명을 사용하지 않도록 설정하고 Cloud9 인스
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
+```
 
+설치 후 탭을 새로 연다.   
+
+```bash
 aws --version
 pip install awscli --upgrade --user
 ```
@@ -175,15 +179,16 @@ mvn package -Dmaven.test.skip=true
 docker build -t petclinic .
 ```
 
-## Run Petclinic application locally
-Run the following inside the Cloud9 terminal:
+## Petclinic 애플리케이션을 로컬로 실행
 
 ```bash
-docker run -it --rm -p 8080:80  --name petclinic petclinic
+docker run -it --rm -p 8080:80 --name petclinic petclinic
 ```
+
 ![ApplicationLocal](images/docker-local-run.png)
 
-This will run the application using container port of 80 and will expose the application to host port of 8080. Click Preview from the top menu and then click “Preview Running Application.” It will open a browser displaying the Spring Petclinic application.
+컨테이너 80 포트를 사용하여 애플리케이션이 실행되고, 호스트 8080 포트에 노출된다.   
+상단 메뉴 Preview 메뉴의 Preview Running Application을 클릭하면, 스프링 펫클리닉 애플리케이션을 표시하는 브라우저가 열린다.   
 
 ## Push Petclinic docker image to Amazon ECR
 On your Cloud9 IDE open a new terminal and run the following inside the new terminal:
