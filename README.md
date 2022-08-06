@@ -9,16 +9,19 @@
 ## 개요
 
 AWS App Runner, Amazon RDS, AWS CodePipeline, AWS CodeCommit, AWS CodeBuild 등 AWS CI/CD 툴을 사용하여 엔지니어가 서버리스 컨테이너 워크로드를 위한 파이프라인을 구축할 수 있도록 한다.   
-
+   
 [AWS App Runner](https://aws.amazon.com/apprunner/) 는 컨테이너형 웹 애플리케이션을 규모에 맞게 배포 및 실행하기 위한 AWS 모범 사례와 기술을 활용한다.   
 이를 통해 새로운 애플리케이션 및 기능을 출시하는데 소요되는 시간을 대폭 단축된다.   
+   
 App Runner는 AWS ECS와 Fargate 위에서 실행되고, 휠씬 더 쉬운 접근성과 비용 추정이 간단하다.(초당 고정 CPU/메모리 요금 부과)   
 
 ## 배경
 
-스프링 펫클리닉 샘플 애플리케이션은 스프링 애플리케이션 프레임워크를 사용하여 단순하지만 강력한 데이터베이스 지향 애플리케이션을 구축하는 방법을 보여주기 위해 설계되었다.   
-백엔드에서 AWS RDS(MySQL)를 사용하며 스프링의 핵심 기능 활용을 시연한다.   
 스프링 프레임워크는 다양한 유형의 산업 애플리케이션을 구축하기 위해 독립적/집합적으로 사용될 수 있는데 초점을 맞추고 느슨하게 결합된 작은 자바 프레임워크의 집합이다.   
+   
+스프링 펫클리닉 샘플 애플리케이션은 스프링 애플리케이션 프레임워크를 사용하여 단순하지만 강력한 데이터베이스 지향 애플리케이션을 구축하는 방법을 보여주기 위해 설계되었다.   
+   
+백엔드는 AWS RDS(MySQL)를 사용하며 스프링의 핵심 기능 활용을 시연한다.   
 
 ## Contributor
 
@@ -27,27 +30,27 @@ App Runner는 AWS ECS와 Fargate 위에서 실행되고, 휠씬 더 쉬운 접�
 ## Architecture
 ![Architecture](images/Architecture.png)
 
-## Prerequisites
-
-Before you build the whole infrastructure, including your CI/CD pipeline, you will need to meet the following pre-requisites.
+## 사전 준비 사항
 
 ### AWS account
 
-Ensure you have access to an AWS account, and a set of credentials with *Administrator* permissions. **Note:** In a production environment we would recommend locking permissions down to the bare minimum needed to operate the pipeline.
+Administrator 권한이 있는 AWS 계정   
+(참고. 운영 환경에서는 파이프라인 운영에 필요한 최소한의 권한으로 해야 함)   
 
-### Create an AWS Cloud9 environment
+### AWS Cloud9 환경 생성
 
-Log into the AWS Management Console and search for Cloud9 services in the search bar. Click Cloud9 and create an AWS Cloud9 environment in the `us-east-1` region based on Amazon Linux 2. You can select the instance type as t2.micro.
+AWS 관리 콘솔에 로그인 후 Cloud9 서비스를 검색 후 실행하여 ap-northeast-1 리전에서 Amazon Linux2 기반으로 환경을 구성한다. 여기서는 t3.medium으로 선택한다.   
 
-### Configure the AWS Cloud9 environment
+### AWS Cloud9 환경 구성
 
-Launch the AWS Cloud9 IDE. Close the `Welcome` tab and open a new `Terminal` tab.
+AWS Cloud9 IDE를 실행 후 Welcome 탭을 닫고 새 터미널 탭을 연다.   
 
 ![Cloud9](images/Cloud9.png)
 
-#### Create and attach an IAM role for your Cloud9 instance
+#### Cloud9 인스턴스에 대한 IAM 역할 생성 및 연결
 
-By default, Cloud9 manages temporary IAM credentials for you.  Unfortunately these are incomaptible with Terraform. To get around this you need to disable Cloud9 temporary credentials, and create and attach an IAM role for your Cloud9 instance.
+기본적으로, Cloud9은 임시 IAM 자격 증명을 관리하나, 테라폼과 호환되지 않는다.   
+Cloud9 임시 자격 증명을 사용하지 않도록 설정하고 Cloud9 인스턴스에 대한 IAM 역할을 생성 후 연결해야 한다.   
 
 1. Follow [this deep link to create an IAM role with Administrator access.](https://console.aws.amazon.com/iam/home#/roles$new?step=review&commonUseCase=EC2%2BEC2&selectedUseCase=EC2&policies=arn:aws:iam::aws:policy%2FAdministratorAccess)
 1. Confirm that **AWS service** and **EC2** are selected, then click **Next** to view permissions.
