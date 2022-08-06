@@ -189,7 +189,7 @@ docker run -it --rm -p 8080:80 --name petclinic petclinic
 ![ApplicationLocal](images/docker-local-run.png)
 
 컨테이너 80 포트를 사용하여 애플리케이션이 실행되고, 호스트 8080 포트에 노출된다.   
-상단 메뉴 Preview 메뉴의 Preview Running Application을 클릭하면, 스프링 펫클리닉 애플리케이션을 표시하는 브라우저가 열린다.   
+상단 메뉴 `Preview` 메뉴의 `Preview Running Application`을 클릭하면, 스프링 펫클리닉 애플리케이션을 표시하는 브라우저가 열린다.   
 
 ## Petclinic 도커 이미지를 Amazon ECR에 푸시
 새 터미널을 열고, 다음을 실행한다.   
