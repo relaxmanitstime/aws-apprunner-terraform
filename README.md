@@ -234,6 +234,8 @@ aws ssm put-parameter --name /database/password --value mysqlpassword --type Sec
 cd ~/environment/aws-apprunner-terraform/terraform
 ```
 
+![AwsApprunnerTerraformTerraformTfvars](images/aws-apprunner-terraform-terraform-tfvars.png)
+
 `terraform.tfvars` 파일을 수정한다.   
 - aws_profile은 "default" 그대로 둔다.   
 - aws_region은 `"ap-northeast-1"`으로 수정하고,   
