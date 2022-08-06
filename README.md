@@ -366,6 +366,7 @@ git push -u origin master
 파이프라인은 코드를 pull하고, 도커 이미지를 빌드 및 ECR에 푸시하고, ECS 클러스터에 배포한다.   
 이 작업은 몇 분 정도 걸린다.   
 [AWS CodePipeline console](https://console.aws.amazon.com/codepipeline) 에서 파이프라인을 모니터링할 수 있다.   
+![AwsCodePipelineConsole](images/aws-codepipeline-console.png)
 
 ### Test the application
 
