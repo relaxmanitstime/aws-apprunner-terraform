@@ -92,7 +92,7 @@ aws --version
 pip install awscli --upgrade --user
 ```
 
-aws configure 를 통해 아래처럼 설정.   
+aws configure를 통해 아래처럼 설정한다.      
 
 ```
 admin:~/environment $ aws configure
@@ -123,13 +123,13 @@ sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
 sudo ln -s /opt/apache-maven-3.8.1 /opt/maven
 ```
 
-아래와 같이 설정한다.
+아래와 같이 bash 설정으로 들어간 후,   
 
 ```bash
 sudo nano ~/.bashrc
 ```
 
-파일 끝에 다음을 붙여 넣는다.   
+파일 끝에 다음을 붙여넣고 저장 후 빠져나온다.   
 
 ```bash
 export M2_HOME=/opt/maven
@@ -137,7 +137,7 @@ export MAVEN_HOME=/opt/maven
 export PATH=${M2_HOME}/bin:${PATH}
 ```
 
-아래와 같이 설치되었음을 확인하다.   
+아래와 같이 설치되었음을 확인한다.   
 
 ```bash
 source ~/.bashrc
@@ -190,8 +190,8 @@ docker run -it --rm -p 8080:80 --name petclinic petclinic
 컨테이너 80 포트를 사용하여 애플리케이션이 실행되고, 호스트 8080 포트에 노출된다.   
 상단 메뉴 Preview 메뉴의 Preview Running Application을 클릭하면, 스프링 펫클리닉 애플리케이션을 표시하는 브라우저가 열린다.   
 
-## Push Petclinic docker image to Amazon ECR
-On your Cloud9 IDE open a new terminal and run the following inside the new terminal:
+## Petclinic 도커 이미지를 Amazon ECR에 푸시
+새 터미널을 열고, 다음을 실행한다.   
 
 ```bash
 AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text)
@@ -209,26 +209,27 @@ aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --
 
 docker tag $IMAGE_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME
 docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME
-
 ```
 
-## Build the infrastructure and pipeline
+그 후, AWS ECR의 리포지토리 메뉴로 가서 petclinic을 삭제한다.(이후 테라폼에서 에러 발생 방지 목적)   
 
-We shall use Terraform to build the above architecture including the AWS CodePipeline.
+## 인프라 및 파이프라인 구축
 
-**Note:** This workshop will create chargeable resources in your account. When finished, please make sure you clean up resources as instructed at the end.
+테라폼을 사용해 AWS Code Pipeline을 포함한 아키텍처를 구축한다.(유료 리소스를 생성하므로 비용절감을 위해 향후 리소스를 정리하는 것이 좋다.)   
 
-### Set up SSM parameter for DB passwd
+### DB 암호에 대한 SSM 매개변수 설정
 
 ```bash
-aws ssm put-parameter --name /database/password  --value mysqlpassword --type SecureString
+aws ssm put-parameter --name /database/password --value mysqlpassword --type SecureString
 ```
 
-### Edit terraform variables
+### 테라폼 변수 편집
 
 ```bash
 cd ~/environment/aws-apprunner-terraform/terraform
 ```
+
+
 
 Edit `terraform.tfvars`, leave the `aws_profile` as `"default"`, and ensure `aws_region` matches your environment, and update `codebuild_cache_bucket_name` to replace the placeholder `yyyymmdd` with today's date, and the identifier `identifier` with something unique to you to create globally unique S3 bucket name. S3 bucket names can include numbers, lowercase letters and hyphens.
 
