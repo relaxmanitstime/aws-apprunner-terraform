@@ -26,6 +26,7 @@ App Runner는 AWS ECS와 Fargate 위에서 실행되고, 휠씬 더 쉬운 접�
 ## 기여자
 
 1. Irshad A Buchh, Amazon Web Services (https://github.com/aws-samples/aws-apprunner-terraform)
+2. relaxmanitstime
 
 ## 아키텍처
 ![Architecture](images/Architecture.png)
@@ -233,7 +234,7 @@ cd ~/environment/aws-apprunner-terraform/terraform
 
 Edit `terraform.tfvars`, leave the `aws_profile` as `"default"`, and ensure `aws_region` matches your environment, and update `codebuild_cache_bucket_name` to replace the placeholder `yyyymmdd` with today's date, and the identifier `identifier` with something unique to you to create globally unique S3 bucket name. S3 bucket names can include numbers, lowercase letters and hyphens.
 
-### Build
+### 빌드
 
 Initialise Terraform:
 
