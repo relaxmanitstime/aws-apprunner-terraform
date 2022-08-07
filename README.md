@@ -67,20 +67,20 @@ Cloud9 임시 자격 증명을 사용하지 않도록 설정하고 Cloud9 인스
 1. Name에 **workshop-admin** 입력후 **Create role** 클릭
 ![createrole](images/createrole.png)
 1. [Cloud9 EC2 인스턴스 링크](https://console.aws.amazon.com/ec2/v2/home?#Instances:tag:Name=aws-cloud9-;sort=desc:launchTime)
-1. 인스턴스 선택 후, **Actions / Security / Modify IAM Role** 선택. 참고: 메뉴 옵션이 없다면, **Actions / Instance Settings / Modify IAM Role** 을 대신 선택.
+1. 인스턴스 선택 후, 마우스 우측 버튼 **보안 / IAM 역할 수정** 선택. 참고: 메뉴 옵션이 없다면, **Actions / Instance Settings / Modify IAM Role** 을 대신 선택.
 ![c9instancerole](images/c9instancerole.png)
-1. Choose **workshop-admin** from the **IAM Role** drop down, and select **Save**
+1. IAM 역할에 **workshop-admin** 드롭다운 선택 후 **Save** 선택
 ![c9attachrole](images/c9attachrole.png)
-1. Return to your Cloud9 workspace and click the gear icon (in top right corner), or click to open a new tab and choose "Open Preferences"
-1. Select **AWS SETTINGS**
-1. Turn off **AWS managed temporary credentials**
-1. Close the Preferences tab
+1. Cloud9 워크스페이스로 돌아가 우측 상단 기어 아이콘 클릭하여 환경설정 열기(Open Preferences)를 선택
+1. **AWS SETTINGS** 선택
+1. **AWS managed temporary credentials** 옵션을 끈다
+1. 탭 닫기
 ![c9disableiam](images/c9disableiam.png)
-1. In the Cloud9 terminal pane, execute the command:
+1. Cloud9 터미널에서 아래 명령어 실행
     ```bash
     rm -vf ${HOME}/.aws/credentials
     ```
-1. As a final check, use the [GetCallerIdentity](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html) CLI command to validate that the Cloud9 IDE is using the correct IAM role.
+1. 마지막으로, [GetCallerIdentity](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html) CLI 명령어를 사용해 Cloud9 IDE가 올바른 IAM 역할을 사용하고 있는지 확인.
     ```bash
     aws sts get-caller-identity --query Arn | grep workshop-admin -q && echo "IAM role valid" || echo "IAM role NOT valid"
     ```
