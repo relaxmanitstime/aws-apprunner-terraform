@@ -63,11 +63,11 @@ Cloud9 임시 자격 증명을 사용하지 않도록 설정하고 Cloud9 인스
 1. [관리자 권한을 가진 IAM Role 생성](https://console.aws.amazon.com/iam/home#/roles$new?step=review&commonUseCase=EC2%2BEC2&selectedUseCase=EC2&policies=arn:aws:iam::aws:policy%2FAdministratorAccess)
 1. **AWS service**, **EC2** 선택 후 권한 확인을 위해 **Next** 클릭
 1. **AdministratorAccess** 선택되어 있는지 확인 후, 태그를 할당하기 위해 **Next: Tags** 클릭
-1. Take the defaults, and click **Next: Review** to review.
-1. Enter **workshop-admin** for the Name, and click **Create role**.
+1. 기본값을 사용하고, **Next: Review** 클릭
+1. Name에 **workshop-admin** 입력후 **Create role** 클릭
 ![createrole](images/createrole.png)
-1. Follow [this deep link to find your Cloud9 EC2 instance](https://console.aws.amazon.com/ec2/v2/home?#Instances:tag:Name=aws-cloud9-;sort=desc:launchTime)
-1. Select the instance, then choose **Actions / Security / Modify IAM Role**. Note: If you cannot find this menu option, then look under **Actions / Instance Settings / Modify IAM Role** instead.
+1. [Cloud9 EC2 인스턴스 링크](https://console.aws.amazon.com/ec2/v2/home?#Instances:tag:Name=aws-cloud9-;sort=desc:launchTime)
+1. 인스턴스 선택 후, **Actions / Security / Modify IAM Role** 선택. 참고: 메뉴 옵션이 없다면, **Actions / Instance Settings / Modify IAM Role** 을 대신 선택.
 ![c9instancerole](images/c9instancerole.png)
 1. Choose **workshop-admin** from the **IAM Role** drop down, and select **Save**
 ![c9attachrole](images/c9attachrole.png)
