@@ -270,7 +270,7 @@ terraform apply
 
 “terraform apply”을 완료하는 데 몇 분 정도 걸린다.   
 
-![TerraformApplyResult](images/aws-terraform_apply_result.png)
+![TerraformApplyResult](images/terraform_apply_result.png)
 
 ### Explore the stack you have built
 
