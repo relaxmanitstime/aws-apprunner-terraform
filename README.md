@@ -282,7 +282,7 @@ terraform apply
 - 코드빌드 프로젝트 [AWS CodeBuild console](https://console.aws.amazon.com/codebuild).
 - 코드 파이프라인 [AWS CodePipeline console](https://console.aws.amazon.com/codepipeline).
 
-코드커밋 리포에 빌드한 코드가 없기 때문에 파이프라인이 실행한 상태에서 시작된다.   
+코드커밋 리포에 빌드한 코드가 없기 때문에 파이프라인이 한 상태에서 시작된다.   
 다음 단계에서는 파이프라인을 트리거하기 위해 펫클리닉 앱을 repo에 푸시한다.    
 
 ### App Runner 서비스 탐색
