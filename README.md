@@ -378,9 +378,7 @@ git push -u origin master
 [AWS CodePipeline console](https://console.aws.amazon.com/codepipeline) 에서 파이프라인을 모니터링할 수 있다.   
 ![AwsCodePipelineConsole](images/aws-codepipeline-console.png)
 
-### Test the application
-
-From the output of the Terraform build, note the Terraform output `apprunner_service_url`.
+### 애플리케이션 테스트
 
 ```bash
 cd ~/environment/aws-apprunner-terraform/terraform
@@ -388,35 +386,35 @@ export tf_apprunner_service_url=$(terraform output apprunner_service_url)
 echo $tf_apprunner_service_url
 ```
 
-Use this in your browser to access the application.
+테라폼 빌드 아웃풋을 통해 `apprunner_service_url` URL을 브라우저를 통해 액세스한다.   
 
 ![Petclinic](images/petclinic.png)
-## Push a change through the pipeline and re-test
 
-The pipeline can now be used to deploy any changes to the application.
+## 변경사항을 파이프라인에 적용하고 재테스트
 
-You can try this out by changing the welcome message as follows:
+이제 파이프라인을 사용하여 변경사항을 애플리케이션에 배포할 수 있다.   
+아래와 같이 환영 메세지를 변경하여 재테스트할 수 있다.
 
 ```
 cd ~/environment/aws-apprunner-terraform/petclinic
 vi src/main/resources/messages/messages.properties
 ```
-Change the value for the welcome string, for example, to "Hello".
 
-Commit the change:
+웰컴 문자열을 예를 들어 "Hello"로 변경 후 변경사항을 커밋한다.   
 
 ```
 git add .
 git commit -m "Changed welcome string"
 ```
 
-Push the change to trigger pipeline:
+파이프라인을 트리거하기 위해 변경사항을 푸시한다.   
 
 ```bash
 git push origin master
 ```
 
-As before, you can use the console to observe the progression of the change through the pipeline. Once done, verify that the application is working with the modified welcome message.
+이전과 마찬가지로, 콘솔을 사용하여 파이프라인을 통한 변경 진행 사항을 확인할 수 있다.   
+작업이 완료되면, 애플리케이션이 수정된 환영 메세지로 수정되었는지 확인한다.   
 
 ## 스택 해체 및 리소스 삭제
 
