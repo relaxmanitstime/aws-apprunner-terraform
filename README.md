@@ -272,21 +272,21 @@ terraform apply
 
 ![TerraformApplyResult](images/terraform_apply_result.png)
 
-### Explore the stack you have built
+### 구축한 스택 탐색
 
-Once the build is complete, you can explore your environment using the AWS console:
-- View the App Runner service using the [AWS App Runner console](https://console.aws.amazon.com/apprunner/)
-- View the RDS database using the [Amazon RDS console](https://console.aws.amazon.com/rds).
-- View the ECR repo using the [Amazon ECR console](https://console.aws.amazon.com/ecr).
-- View the CodeCommit repo using the [AWS CodeCommit console](https://console.aws.amazon.com/codecommit).
-- View the CodeBuild project using the [AWS CodeBuild console](https://console.aws.amazon.com/codebuild).
-- View the pipeline using the [AWS CodePipeline console](https://console.aws.amazon.com/codepipeline).
+빌드가 완료되면 AWS 콘솔을 사용하여 환경을 탐색할 수 있다.   
+- App Runner 서비스 [AWS App Runner console](https://console.aws.amazon.com/apprunner/)
+- RDS DB [Amazon RDS console](https://console.aws.amazon.com/rds).
+- ECR repo [Amazon ECR console](https://console.aws.amazon.com/ecr).
+- 코드커밋 리포 [AWS CodeCommit console](https://console.aws.amazon.com/codecommit).
+- 코드빌드 프로젝트 [AWS CodeBuild console](https://console.aws.amazon.com/codebuild).
+- 코드 파이프라인 [AWS CodePipeline console](https://console.aws.amazon.com/codepipeline).
 
+코드커밋 리포에 빌드한 코드가 없기 때문에 파이프라인이 실행한 상태에서 시작된다.   
+다음 단계에서는 파이프라인을 트리거하기 위해 펫클리닉 앱을 repo에 푸시한다.    
 
-Note that your pipeline starts in a failed state. That is because there is no code to build in the CodeCommit repo! In the next step you will push the petclinic app into the repo to trigger the pipeline.
-
-### Explore the App Runner service
-Open the App Runner service configuration file [terraform/services.tf](terraform/services.tf) file and explore the options specified in the file.
+### App Runner 서비스 탐색
+App Runner 서비스 설정파일 [terraform/services.tf](terraform/services.tf)을 열어서 옵션들을 확인한다.   
 
 ```typescript
  image_repository {
@@ -304,7 +304,7 @@ Open the App Runner service configuration file [terraform/services.tf](terraform
       image_repository_type = "ECR"
     }
 ```
-**Note:** In a production environment it is a best practice to use a meaningful tag instead of using the `:latest` tag.
+**참고:** 운영 환경에서는 latest 태그 대신 의미 있는 태그를 사용하는 것이 좋다.   
 
 ## 파이프라인을 사용하여 펫클리닉 애플리케이션 배포
 
