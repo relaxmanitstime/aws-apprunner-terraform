@@ -60,9 +60,9 @@ AWS Cloud9 IDE를 실행 후 Welcome 탭을 닫고 새 터미널 탭을 연다.
 기본적으로, Cloud9은 임시 IAM 자격 증명을 관리하나, 테라폼과 호환되지 않는다.   
 Cloud9 임시 자격 증명을 사용하지 않도록 설정하고 Cloud9 인스턴스에 대한 IAM 역할을 생성 후 연결해야 한다.   
 
-1. Follow [this deep link to create an IAM role with Administrator access.](https://console.aws.amazon.com/iam/home#/roles$new?step=review&commonUseCase=EC2%2BEC2&selectedUseCase=EC2&policies=arn:aws:iam::aws:policy%2FAdministratorAccess)
-1. Confirm that **AWS service** and **EC2** are selected, then click **Next** to view permissions.
-1. Confirm that **AdministratorAccess** is checked, then click **Next: Tags** to assign tags.
+1. [관리자 권한을 가진 IAM Role 생성](https://console.aws.amazon.com/iam/home#/roles$new?step=review&commonUseCase=EC2%2BEC2&selectedUseCase=EC2&policies=arn:aws:iam::aws:policy%2FAdministratorAccess)
+1. **AWS service**, **EC2** 선택 후 권한 확인을 위해 **Next** 클릭
+1. **AdministratorAccess** 선택되어 있는지 확인 후, 태그를 할당하기 위해 **Next: Tags** 클릭
 1. Take the defaults, and click **Next: Review** to review.
 1. Enter **workshop-admin** for the Name, and click **Create role**.
 ![createrole](images/createrole.png)
