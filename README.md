@@ -27,7 +27,7 @@ App Runner는 AWS ECS와 Fargate 위에서 실행되고, 휠씬 더 쉬운 접�
 
 ## 기여자
 
-1. Irshad A Buchh, Amazon Web Services (https://github.com/aws-samples/aws-apprunner-terraform)
+1. Irshad A Buchh, Amazon Web Services
 2. relaxmanitstime
 
 ## 아키텍처
